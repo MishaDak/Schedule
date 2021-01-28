@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title></title>
+    <title>Расписание</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -9,15 +9,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script>
+        function startTime() {
+
+            var today = new Date();
+            var num = today.getDate();
+            var day = getWeekDay();
+            var month = today.getMonth()
+            var h = today.getHours();
+            var m = today.getMinutes();
+            m = checkTime(m);
+            // s = checkTime(s);
+            document.getElementById('txt').innerHTML =
+               "\t" + day + ", " + "\t" + h + ":" + m + ", " + num + "." + month + 1 ;
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+
+        function getWeekDay(date) {
+            date = date || new Date();
+            var days = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+            var day = date.getDay();
+
+            return days[day];
+        }
+    </script>
 </head>
 
-<body>
+<body onload="startTime()">
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a href="#" class="navbar-brad"><img src="img/logo.png" alt="Логотип"></a>
+        <a href="/" class="navbar-brad"><img src="img/logo.png" alt="Логотип"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div style="width: 50%; position: fixed; left: 40em; margin-left: -500px" id="txt"></div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
@@ -36,7 +65,139 @@
         </div>
     </div>
 </nav>
-<footer class="container-fluid">
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col" width="40px">День недели</th>
+        <th scope="col" width="40px">Время</th>
+        <th scope="col" width="50px">Формат</th>
+        <th scope="col" width="150px">Место</th>
+        <th scope="col" width="">Предмет</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th rowspan="3" scope="row">Понедельник</th>
+        <td>9:50-11:25</td>
+        <td>Дистанционно</td>
+        <td>
+            <a href="https://eios.sibsutis.ru/course/view.php?id=2683">Zoom</a>
+        </td>
+        <td>Элективные дисциплины по физической культуре и спорту</td>
+    </tr>
+    <tr>
+        <td>11:40-13:15</td>
+        <td>Лекция Дистанционно</td>
+        <td>
+            <a href="">Zoom</a>
+        </td>
+        <td>Социальные и этические вопросы информационных технологий (Гилев А.Ю.)</td>
+    </tr>
+    <tr>
+        <td>13:45-15:20</td>
+        <td>Лекция Дистанционно</td>
+        <td>
+            <a href="">Zoom</a>
+        </td>
+        <td>Социология (Логутова М.А.)</td>
+    </tr>
+
+    <tr>
+        <th rowspan="3" scope="row">Вторник</th>
+        <td>9:50-11:25</td>
+        <td>Практика</td>
+        <td>Корпус 5, Каб. 228</td>
+        <td>Социология (Логутова М.А.)</td>
+    </tr>
+    <tr>
+        <td>11:40-13:15</td>
+        <td>Практика</td>
+        <td>Корпус 1, Каб. 432</td>
+        <td>Программирование графических процессоров (Милешко А.В.)</td>
+    </tr>
+    <tr>
+        <td>13:45-15:20</td>
+        <td>Практика</td>
+        <td>Корпус 1, Каб. 400а</td>
+        <td>Сети ЭВМ и телекоммуникации (Перышкова Е.Н.)</td>
+    </tr>
+
+    <tr>
+        <th rowspan="3" scope="row">Среда</th>
+        <td>8:00-9:35</td>
+        <td>Практика</td>
+        <td>Корпус 1, Каб. 400л</td>
+        <td>Теория языков программирования и методы трансляции (Крюкова Л.П.)</td>
+    </tr>
+    <tr>
+        <td>9:50-11:25</td>
+        <td>Практика</td>
+        <td>Корпус 1, Каб. 403</td>
+        <td>Микропроцессорные системы (Гонцова А.В.)</td>
+    </tr>
+    <tr>
+        <td>11:40-13:15</td>
+        <td>Практика</td>
+        <td>Корпус 5, Каб. 259</td>
+        <td>Социальные и этические вопросы информационных технологий (Гилев А.Ю.)</td>
+    </tr>
+
+    <tr>
+        <th rowspan="4" scope="row">Четверг</th>
+        <td>8:00-9:35</td>
+        <td>Лекция Дисатанционно</td>
+        <td>
+            <a href="https://eios.sibsutis.ru/course/view.php?id=2683">Zoom</a>
+        </td>
+        <td>Микропроцессорные системы (Резван И.И.)</td>
+    </tr>
+    <tr>
+        <td>9:50-11:25</td>
+        <td>Лекция Дисатанционно</td>
+        <td>
+            <a href="">Zoom</a>
+        </td>
+        <td>Теория языков программирования и методы трансляции (Курносов М.Г.)</td>
+    </tr>
+    <tr>
+        <td>11:40-13:15</td>
+        <td>Лекция Дистанционно</td>
+        <td>
+            <a href="">Zoom</a>
+        </td>
+        <td>Программирование графических процессоров (Малков Е.А.)</td>
+    </tr>
+    <tr>
+        <td>13:45-15:20</td>
+        <td>Дистанционно</td>
+        <td>
+            <a href="">Zoom</a>
+        </td>
+        <td>Элективные дисциплины по физической культуре и спорту</td>
+    </tr>
+
+    <tr>
+        <th rowspan="1" scope="row">Пятница</th>
+        <td>8:30-17:00</td>
+        <td>Очно</td>
+        <td>ВУЦ</td>
+        <td>Военная кафедра</td>
+    </tr>
+
+    <tr>
+        <th rowspan="1" scope="row">Суббота</th>
+        <td>9:50-11:25</td>
+        <td>Лекция Дистанционно</td>
+        <td>
+            <a href="https://eios.sibsutis.ru/course/view.php?id=2683">Microsoft Teams</a>
+        </td>
+        <td>Сети ЭВМ и телекоммуникации (Мамойленко С.Н.)</td>
+    </tr>
+    </tbody>
+</table>
+
+<footer class="container-fluid" style="background-color: #2d2d44; hight: 3%; color: darkgrey; position: fixed; left: 0; bottom: 0; padding: 10px; width: 100%;">
     <div class="container">
         <div class="row padding text-center">
             <div class="col-12">

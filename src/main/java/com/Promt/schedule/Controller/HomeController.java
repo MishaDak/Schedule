@@ -15,9 +15,20 @@ public class HomeController {
     }
 
     @GetMapping("/about")
-    public String schedule(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public String about(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("title", name);
         return "about";
     }
 
+    @GetMapping("/timetable")
+    public String timetable(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("title", name);
+        return "timetable";
+    }
+
+    @GetMapping("/home")
+    public String home(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("title", name);
+        return "home";
+    }
 }
